@@ -1,5 +1,7 @@
 package id.co.astratech.rest;
 
+import id.co.astratech.model.LayananModel;
+import id.co.astratech.model.SparepartModel;
 import id.co.astratech.response.DtoResponse;
 import id.co.astratech.service.SparepartService;
 import id.co.astratech.vo.SparepartVo;
@@ -29,17 +31,22 @@ public class SparepartRest {
     }
 
     @PostMapping("/saveSparepart")
-    public DtoResponse saveSparepart(@RequestBody SparepartVo sparepart) {
+    public DtoResponse saveSparepart(@RequestBody SparepartModel sparepart) {
         return sparepartService.saveSparepart(sparepart);
     }
 
-    @PutMapping("/updateSparepart")
-    public DtoResponse updateSparepart(@RequestBody SparepartVo sparepart) {
+    @PostMapping("/updateSparepart")
+    public DtoResponse updateSparepart(@RequestBody SparepartModel sparepart) {
         return sparepartService.updateSparepart(sparepart);
     }
 
-        @DeleteMapping("/deleteSparepart")
-    public DtoResponse deleteSparepart(@RequestParam("IdSparepart") Integer idSparepart) {
+    @PostMapping("/deleteSparepart")
+    public DtoResponse deleteSparepart(@RequestParam("bja_id") Integer idSparepart) {
       return sparepartService.deleteSparepart(idSparepart);
+    }
+
+    @PostMapping("/softDeleteSparepart")
+    public DtoResponse softDeleteSparepart(@RequestParam("bja_id") Integer idSparepart){
+        return sparepartService.softDeleteSparepart(idSparepart);
     }
 }
