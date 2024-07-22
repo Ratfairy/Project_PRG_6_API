@@ -4,7 +4,6 @@ import id.co.astratech.dao.UserDao;
 import id.co.astratech.model.UserModel;
 import id.co.astratech.repository.LoginRepository;
 import id.co.astratech.repository.UserRepository;
-import id.co.astratech.response.DtoResponse;
 import id.co.astratech.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
