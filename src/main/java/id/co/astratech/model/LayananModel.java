@@ -17,7 +17,7 @@ public class LayananModel {
     @Column(name = "bja_nama")
     private String nameLayanan;
     @Column(name = "bja_harga")
-    private BigInteger hargaLayanan;
+    private Integer hargaLayanan;
     @Column(name = "bja_estimasi")
     private Integer estimasiLayanan;
     @Column(name = "bja_status")
@@ -25,7 +25,7 @@ public class LayananModel {
 
     public LayananModel() { }
 
-    public LayananModel(Integer idLayanan, String nameLayanan, BigInteger hargaLayanan, Integer estimasiLayanan, Integer statusLayanan) {
+    public LayananModel(Integer idLayanan, String nameLayanan, Integer hargaLayanan, Integer estimasiLayanan, Integer statusLayanan) {
         this.idLayanan = idLayanan;
         this.nameLayanan = nameLayanan;
         this.hargaLayanan = hargaLayanan;
@@ -49,11 +49,11 @@ public class LayananModel {
         this.nameLayanan = nameLayanan;
     }
 
-    public BigInteger getHargaLayanan() {
+    public Integer getHargaLayanan() {
         return hargaLayanan;
     }
 
-    public void setHargaLayanan(BigInteger hargaLayanan) {
+    public void setHargaLayanan(Integer hargaLayanan) {
         this.hargaLayanan = hargaLayanan;
     }
 

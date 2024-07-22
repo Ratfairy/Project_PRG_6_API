@@ -1,6 +1,5 @@
 package id.co.astratech.rest;
 
-import id.co.astratech.model.SparepartModel;
 import id.co.astratech.response.DtoResponse;
 import id.co.astratech.service.SparepartService;
 import id.co.astratech.vo.SparepartVo;
@@ -25,27 +24,22 @@ public class SparepartRest {
     }
 
     @GetMapping("/getSparepartById")
-        public DtoResponse getSparepartById(@RequestParam("sca_id") Integer idSparepart) {
+        public DtoResponse getSparepartById(@RequestParam("IdSparepart") Integer idSparepart) {
         return sparepartService.getSparepartById(idSparepart);
     }
 
     @PostMapping("/saveSparepart")
-    public DtoResponse saveSparepart(@RequestBody SparepartModel sparepart) {
+    public DtoResponse saveSparepart(@RequestBody SparepartVo sparepart) {
         return sparepartService.saveSparepart(sparepart);
     }
 
-    @PostMapping("/updateSparepart")
-    public DtoResponse updateSparepart(@RequestBody SparepartModel updatesparepart) {
-        return sparepartService.updateSparepart(updatesparepart);
+    @PutMapping("/updateSparepart")
+    public DtoResponse updateSparepart(@RequestBody SparepartVo sparepart) {
+        return sparepartService.updateSparepart(sparepart);
     }
 
-    @PostMapping("/deleteSparepart")
-    public DtoResponse deleteSparepart(@RequestParam("sca_id") Integer idSparepart) {
-        return sparepartService.deleteSparepart(idSparepart);
-    }
-
-    @PostMapping("/softDeleteSparepart")
-    public DtoResponse softDeleteSparepart(@RequestParam("sca_id") Integer idSparepart){
-        return sparepartService.softDeleteSparepart(idSparepart);
+        @DeleteMapping("/deleteSparepart")
+    public DtoResponse deleteSparepart(@RequestParam("IdSparepart") Integer idSparepart) {
+      return sparepartService.deleteSparepart(idSparepart);
     }
 }

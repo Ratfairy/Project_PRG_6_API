@@ -8,7 +8,7 @@ import java.math.BigInteger;
 public class LayananVo {
     private Integer idLayanan;
     private String nama;
-    private BigInteger harga;
+    private Integer harga;
     private Integer estimasi;
     private Integer status;
 
@@ -22,7 +22,7 @@ public class LayananVo {
         this.status = layanan.getStatusLayanan();
     }
 
-    public LayananVo(Integer idLayanan, String nama, BigInteger harga, Integer estimasi, Integer status) {
+    public LayananVo(Integer idLayanan, String nama, Integer harga, Integer estimasi, Integer status) {
         this.idLayanan = idLayanan;
         this.nama = nama;
         this.harga = harga;
@@ -46,11 +46,11 @@ public class LayananVo {
         this.nama = nama;
     }
 
-    public BigInteger getHarga() {
+    public Integer getHarga() {
         return harga;
     }
 
-    public void setHarga(BigInteger harga) {
+    public void setHarga(Integer harga) {
         this.harga = harga;
     }
 
