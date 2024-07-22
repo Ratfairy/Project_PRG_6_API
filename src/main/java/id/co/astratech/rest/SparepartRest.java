@@ -41,12 +41,12 @@ public class SparepartRest {
     }
 
     @PostMapping("/deleteSparepart")
-    public DtoResponse deleteSparepart(@RequestParam("bja_id") Integer idSparepart) {
+    public DtoResponse deleteSparepart(@RequestParam("sca_id") Integer idSparepart) {
       return sparepartService.deleteSparepart(idSparepart);
     }
 
     @PostMapping("/softDeleteSparepart")
-    public DtoResponse softDeleteSparepart(@RequestParam("bja_id") Integer idSparepart){
+    public DtoResponse softDeleteSparepart(@RequestParam("sca_id") Integer idSparepart){
         return sparepartService.softDeleteSparepart(idSparepart);
     }
 }
