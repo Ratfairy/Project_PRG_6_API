@@ -80,6 +80,7 @@ public class LayananServiceImpl implements LayananService {
         return new DtoResponse(404, null, mNotFound);
     }
 
+    @Override
     public DtoResponse softDeleteLayanan(Integer idLayanan) {
         LayananModel layanan = layananRepository.findById(idLayanan).orElse(null);
         if (layanan != null) {

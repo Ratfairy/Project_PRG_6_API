@@ -32,6 +32,10 @@ public class LayananRest {
     public DtoResponse deleteLayanan(@RequestParam("bja_id") Integer idLayanan){
         return layananService.deleteLayanan(idLayanan);
     }
+    @PostMapping("/softdeleteLayanan")
+    public DtoResponse softdeleteLayanan(@RequestParam("bja_id") Integer idLayanan){
+        return layananService.softDeleteLayanan(idLayanan);
+    }
     @GetMapping("/getLayananById")
     public DtoResponse getLayananById(@RequestParam("bja_id") Integer idLayanan){
         return layananService.getLayananById(idLayanan);

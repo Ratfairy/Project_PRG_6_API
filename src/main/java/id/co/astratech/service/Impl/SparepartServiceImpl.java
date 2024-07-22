@@ -1,7 +1,7 @@
 package id.co.astratech.service.Impl;
 
-import id.co.astratech.constant.UserConstant;
 import id.co.astratech.dao.SparepartDao;
+import id.co.astratech.model.LayananModel;
 import id.co.astratech.model.SparepartModel;
 import id.co.astratech.repository.SparepartRepository;
 import id.co.astratech.response.DtoResponse;
@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static id.co.astratech.constant.LayananConstant.*;
-import static id.co.astratech.constant.UserConstant.mCreateSuccess;
+import static id.co.astratech.constant.LayananConstant.mNotFound;
+import static id.co.astratech.constant.LayananConstant.mUpdateFailed;
+import static id.co.astratech.constant.LayananConstant.mUpdateSuccess;
+import static id.co.astratech.constant.SparepartConstant.*;
 
 @Service
 @Transactional
@@ -34,64 +36,59 @@ public class SparepartServiceImpl implements SparepartService
     }
 
     @Override
-    public DtoResponse getSparepartById(Integer IdSparepart){
-        SparepartModel sparepartModel = sparepartRepository.findById(IdSparepart).orElse(null);
+    public DtoResponse getSparepartById(Integer idSparepart){
+        SparepartModel sparepartModel = sparepartRepository.findById(idSparepart).orElse(null);
         if (sparepartModel != null) {
             return new DtoResponse(200, sparepartModel, mUpdateSuccess);
-        } else {
-            return new DtoResponse(404, null, "Service not found");
-        }
-    }
-
-    @Override
-    public DtoResponse saveSparepart(SparepartVo sparepart) {
-        try {
-            SparepartModel newSparepart = new SparepartModel();
-            newSparepart.setNamaSparepart(sparepart.getNamaSparepart());
-            newSparepart.setHargaSparepart(sparepart.getHargaSparepart());
-            newSparepart.setSatuanSparepart(sparepart.getSatuanSparepart());
-            newSparepart.setMerkSparepart(sparepart.getMerkSparepart());
-            newSparepart.setDeskripsiSparepart(sparepart.getDeskripsiSparepart());
-            newSparepart.setStatusSparepart("Aktif");
-
-            sparepartRepository.save(newSparepart);
-            return new DtoResponse(201, sparepart, mCreateSuccess);
-        } catch (Exception e) {
-            return new DtoResponse(400, sparepart, UserConstant.mCreateFailed);
-        }
-    }
-
-    @Override
-    public DtoResponse updateSparepart(SparepartVo sparepartVo) {
-        Optional<SparepartModel> sparepartOptional = sparepartRepository.findById(sparepartVo.getIdSparepart());
-        if (sparepartOptional.isPresent()) {
-            SparepartModel existingSparepart = sparepartOptional.get();
-            existingSparepart.setNamaSparepart(sparepartVo.getNamaSparepart());
-            existingSparepart.setHargaSparepart(sparepartVo.getHargaSparepart());
-            existingSparepart.setSatuanSparepart(sparepartVo.getSatuanSparepart());
-            existingSparepart.setMerkSparepart(sparepartVo.getMerkSparepart());
-            existingSparepart.setDeskripsiSparepart(sparepartVo.getDeskripsiSparepart());
-            existingSparepart.setStatusSparepart(sparepartVo.getStatusSparepart());
-
-            sparepartRepository.save(existingSparepart);
-            return new DtoResponse(200, new SparepartVo(existingSparepart), mUpdateSuccess);
         } else {
             return new DtoResponse(404, null, "Sparepart not found");
         }
     }
 
     @Override
-    public DtoResponse deleteSparepart(Integer IdSparepart) {
-        Optional<SparepartModel> sparepartOptional = sparepartRepository.findById(IdSparepart);
+    public DtoResponse saveSparepart(SparepartModel sparepart){
+        try{
+            sparepartRepository.save(sparepart);
+            return new DtoResponse(200,sparepart,mCreateSuccess);
+        }catch (Exception e){
+            return new DtoResponse(500,sparepart,mCreateFailed);
+        }
+    }
+
+    @Override
+    public DtoResponse updateSparepart(SparepartModel sparepart) {
+        try{
+            SparepartModel updatedSparepart = sparepartRepository.save(sparepart);
+            if (updatedSparepart != null) {
+                return new DtoResponse(200, updatedSparepart, mUpdateSuccess);
+            } else {
+                return new DtoResponse(200, null, mNotFound);
+            }
+        } catch (Exception e) {
+            return new DtoResponse(200,null,mUpdateFailed);
+        }
+    }
+
+    @Override
+    public DtoResponse deleteSparepart(Integer idSparepart) {
+        Optional<SparepartModel> sparepartOptional = sparepartRepository.findById(idSparepart);
         if (sparepartOptional.isPresent()) {
-            sparepartRepository.deleteById(IdSparepart);
+            sparepartRepository.deleteById(idSparepart);
             return new DtoResponse(200, null, mDeleteSuccess);
         } else {
             return new DtoResponse(404, null, "Sparepart not found");
         }
     }
 
-
-
-
+    @Override
+    public DtoResponse softDeleteSparepart(Integer idSparepart) {
+        SparepartModel sparepart = sparepartRepository.findById(idSparepart).orElse(null);
+        if (sparepart != null) {
+            sparepart.setStatusSparepart(0); // Mengubah status menjadi 0 (soft delete)
+            sparepartRepository.save(sparepart);
+            return new DtoResponse(200, + idSparepart);
+        } else {
+            return new DtoResponse(400, + idSparepart + " not found");
+        }
+    }
 }

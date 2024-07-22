@@ -8,5 +8,5 @@ import java.util.List;
 public interface SparepartDao
 {
     List<SparepartVo> getAllSparepart();
-    SparepartVo getSparepartById(Integer IdSparepart);
+    SparepartVo getSparepartById(Integer idSparepart);
 }

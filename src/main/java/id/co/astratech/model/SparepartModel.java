@@ -4,6 +4,8 @@ package id.co.astratech.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigInteger;
+
 @Entity
 @Table(name = "oto_mssukucadang")
 @Data
@@ -12,16 +14,16 @@ public class SparepartModel
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sca_id")
-    private int idSparepart;
+    private Integer idSparepart;
 
     @Column(name = "sca_nama")
     private String namaSparepart;
 
     @Column(name = "sca_harga")
-    private int hargaSparepart;
+    private BigInteger hargaSparepart;
 
     @Column(name = "sca_satuan")
-    private int satuanSparepart;
+    private String satuanSparepart;
 
     @Column(name = "sca_merk")
     private String merkSparepart;
@@ -30,9 +32,9 @@ public class SparepartModel
     private String deskripsiSparepart;
 
     @Column(name = "sca_status")
-    private String statusSparepart;
+    private Integer statusSparepart;
 
-    public SparepartModel(int idSparepart, String namaSparepart, int hargaSparepart, int satuanSparepart, String merkSparepart, String deskripsiSparepart, String statusSparepart) {
+    public SparepartModel(Integer idSparepart, String namaSparepart, BigInteger hargaSparepart, String satuanSparepart, String merkSparepart, String deskripsiSparepart, Integer statusSparepart) {
         this.idSparepart = idSparepart;
         this.namaSparepart = namaSparepart;
         this.hargaSparepart = hargaSparepart;
@@ -42,15 +44,13 @@ public class SparepartModel
         this.statusSparepart = statusSparepart;
     }
 
-    public SparepartModel()
-    {
-    }
+    public SparepartModel() { }
 
-    public int getIdSparepart() {
+    public Integer getIdSparepart() {
         return idSparepart;
     }
 
-    public void setIdSparepart(int idSparepart) {
+    public void setIdSparepart(Integer idSparepart) {
         this.idSparepart = idSparepart;
     }
 
@@ -62,19 +62,19 @@ public class SparepartModel
         this.namaSparepart = namaSparepart;
     }
 
-    public int getHargaSparepart() {
+    public BigInteger getHargaSparepart() {
         return hargaSparepart;
     }
 
-    public void setHargaSparepart(int hargaSparepart) {
+    public void setHargaSparepart(BigInteger hargaSparepart) {
         this.hargaSparepart = hargaSparepart;
     }
 
-    public int getSatuanSparepart() {
+    public String getSatuanSparepart() {
         return satuanSparepart;
     }
 
-    public void setSatuanSparepart(int satuanSparepart) {
+    public void setSatuanSparepart(String satuanSparepart) {
         this.satuanSparepart = satuanSparepart;
     }
 
@@ -94,11 +94,11 @@ public class SparepartModel
         this.deskripsiSparepart = deskripsiSparepart;
     }
 
-    public String getStatusSparepart() {
+    public Integer getStatusSparepart() {
         return statusSparepart;
     }
 
-    public void setStatusSparepart(String statusSparepart) {
+    public void setStatusSparepart(Integer statusSparepart) {
         this.statusSparepart = statusSparepart;
     }
 }
