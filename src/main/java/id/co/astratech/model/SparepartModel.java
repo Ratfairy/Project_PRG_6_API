@@ -44,7 +44,7 @@ public class SparepartModel
         this.statusSparepart = statusSparepart;
     }
 
-    public SparepartModel() {}
+    public SparepartModel() { }
 
     public Integer getIdSparepart() {
         return idSparepart;
