@@ -40,6 +40,6 @@ public class SparepartRest {
 
         @DeleteMapping("/deleteSparepart")
     public DtoResponse deleteSparepart(@RequestParam("IdSparepart") Integer idSparepart) {
-        return sparepartService.deleteSparepart(idSparepart);
+      return sparepartService.deleteSparepart(idSparepart);
     }
 }
