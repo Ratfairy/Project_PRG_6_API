@@ -18,27 +18,27 @@ public class SparepartRest {
         this.sparepartService = sparepartService;
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllSparepart")
     public DtoResponse getAllSparepart() {
         return sparepartService.getAllSparepart();
     }
 
-    @GetMapping("/getById")
-    public DtoResponse getSparepartById(@RequestParam("IdSparepart") Integer idSparepart) {
+    @GetMapping("/getSparepartById")
+        public DtoResponse getSparepartById(@RequestParam("IdSparepart") Integer idSparepart) {
         return sparepartService.getSparepartById(idSparepart);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveSparepart")
     public DtoResponse saveSparepart(@RequestBody SparepartVo sparepart) {
         return sparepartService.saveSparepart(sparepart);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/updateSparepart")
     public DtoResponse updateSparepart(@RequestBody SparepartVo sparepart) {
         return sparepartService.updateSparepart(sparepart);
     }
 
-    @DeleteMapping("/delete")
+        @DeleteMapping("/deleteSparepart")
     public DtoResponse deleteSparepart(@RequestParam("IdSparepart") Integer idSparepart) {
         return sparepartService.deleteSparepart(idSparepart);
     }

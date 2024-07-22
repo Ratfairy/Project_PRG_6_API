@@ -10,4 +10,5 @@ public class SparepartConstant
     public static  final String mUpdateFailed = "Failed to update Service";
     public static final String mDeleteSuccess = "Service deleted successfully";
     public static final String mDeleteFailed = "Failed to delete Service";
+
 }
