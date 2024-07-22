@@ -14,6 +14,14 @@ public class LayananVo {
 
     public LayananVo() { }
 
+    public LayananVo(LayananModel layanan) {
+        this.idLayanan = layanan.getIdLayanan();
+        this.nama = layanan.getNameLayanan();
+        this.harga = layanan.getHargaLayanan();
+        this.estimasi = layanan.getEstimasiLayanan();
+        this.status = layanan.getStatusLayanan();
+    }
+
     public LayananVo(Integer idLayanan, String nama, Integer harga, Integer estimasi, Integer status) {
         this.idLayanan = idLayanan;
         this.nama = nama;
@@ -22,7 +30,43 @@ public class LayananVo {
         this.status = status;
     }
 
+    public Integer getIdLayanan() {
+        return idLayanan;
+    }
 
+    public void setIdLayanan(Integer idLayanan) {
+        this.idLayanan = idLayanan;
+    }
 
+    public String getNama() {
+        return nama;
+    }
 
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public Integer getHarga() {
+        return harga;
+    }
+
+    public void setHarga(Integer harga) {
+        this.harga = harga;
+    }
+
+    public Integer getEstimasi() {
+        return estimasi;
+    }
+
+    public void setEstimasi(Integer estimasi) {
+        this.estimasi = estimasi;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 }
