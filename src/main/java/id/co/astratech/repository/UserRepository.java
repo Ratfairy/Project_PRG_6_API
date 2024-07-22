@@ -10,7 +10,6 @@ import static id.co.astratech.constant.UserConstant.qGetLogin;
 
 
 @Repository
-public interface UserRepository extends JpaRepository<UserModel, String>
-{
+public interface UserRepository extends JpaRepository<UserModel, String> {
 
 }

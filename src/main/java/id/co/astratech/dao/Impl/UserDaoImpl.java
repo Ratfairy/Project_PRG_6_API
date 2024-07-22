@@ -20,7 +20,6 @@ public class UserDaoImpl implements UserDao
     @Autowired
     private LoginRepository loginRepository;
 
-
     @Override
     public List<UserVo> getAllUsers(String role) {
         if (!role.equals("admin") && !role.equals("user")) {
